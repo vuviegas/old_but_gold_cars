@@ -1,2 +1,22 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/collection/1217195/800x600);">
+  <div class="container">
+    <h1>Bem Vindos à Old But Gold Cars</strong>!</h1>
+    <p>A sua loja de carros antigos.</p>
+    <%= link_to 'Ver carros', cars_path, :class =>   "btn btn-flat" %>
+  </div>
+</div>
+
+<div class="container mt-4 d-flex list-inline justify-content-around">
+    <div class="card" style="width: 14rem;">
+      <% @cars.each do |car| %>
+          <img src="https://source.unsplash.com/collection/1573177/800x600" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= car.brand %> | <%= car.model %></h5>
+            <p class="card-text"> <%= car.year %></p>
+            <h2 class="card-car-pricing">R$ <%= car.price %></h2>
+        <%= link_to car_path(car), :class => "btn btn-primary" do %>Ver carro
+        <% end %>
+          </div>
+      <% end %>
+    </div>
+</div>

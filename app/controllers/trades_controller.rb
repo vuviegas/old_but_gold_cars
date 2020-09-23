@@ -1,5 +1,5 @@
 class TradesController < ApplicationController
   def new
-    @trades = Trade.new
+    @trade = Trade.new
   end
 end

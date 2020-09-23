@@ -8,5 +8,7 @@
 require 'faker'
 
 6.times do
-  Car.create!(brand: Faker::Vehicle.manufacture, model: Faker::Vehicle.model, color: Faker::Vehicle.color, year: Faker::Vehicle.year, description: Faker::Vehicle.standard_specs, price: rand(10000..30000), user_id: 1)
+  user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.full_address, email: Faker::Internet.email, password: '123456')
+  Car.create!(brand: Faker::Vehicle.manufacture, model: Faker::Vehicle.model, color: Faker::Vehicle.color, year: Faker::Vehicle.year, description: 'lorem ipsum', price: rand(10000..30000), user: user)
 end
+

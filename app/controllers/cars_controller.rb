@@ -17,7 +17,7 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     @car.user = current_user
     if @car.save
-      redirect_to @car, notice: 'Car ad was successfully created.'
+      redirect_to @car, notice: 'Car ad was successfully created!'
     else
       render :new
     end
@@ -31,13 +31,19 @@ class CarsController < ApplicationController
     redirect_to cars_path(@car)
   end
 
+  def destroy
+    @car.destroy
+
+    redirect_to user_cars_path
+  end
+
   private
 
   def car_params
     params.require(:car).permit(:brand, :model, :color, :year, :price, :description)
   end
 
-  def set_car 
+  def set_car
     @car = Car.find(params[:id])
   end
 end

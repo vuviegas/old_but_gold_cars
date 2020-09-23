@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
-  # before_action = :set_car, only: [:show]
   skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @cars = Car.all
   end
@@ -9,9 +9,23 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
   end
 
+  def new
+    @car = Car.new
+  end
+
+  def create
+    @car = Car.new(car_params)
+    @car.user = current_user
+    if @car.save
+      redirect_to cars_path
+    else
+      render :new
+    end
+  end
+
   private
 
-  # def set_car
-
-  # end
+  def car_params
+    params.require(:car).permit(:brand, :model, :color, :year, :price, :description)
+  end
 end

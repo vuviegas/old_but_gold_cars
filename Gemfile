@@ -36,6 +36,8 @@ gem 'faker'
 # Gem devise for user authentication
 gem 'devise'
 
+# Gem for .env file, to save API keys
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   gem 'pry-byebug'

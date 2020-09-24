@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/collection/1217195/800x600);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1517271710308-aa99f1519490?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80);">
   <div class="container">
     <h1>Welcome to Old But Gold Cars</strong>!</h1>
     <p>Your store of <span id="banner-typed-text"></span>.</p>
@@ -8,16 +8,21 @@
 
 <div class="container mt-5 d-flex justify-content-around">
     <% @cars.first(3).each do |car| %>
-    <div class="card mr-5" style="width: 30rem; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
-      <img src="https://source.unsplash.com/collection/1573177/800x600" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h4 class="card-title"><strong><%= car.brand %> | <%= car.model %></strong></h4>
-        <p class="card-text"> <%= car.year %></p>
-        <div class="d-flex justify-content-between">
-          <h5 class="card-car-pricing">R$ <%= car.price %></h5>
-          <%= link_to "Details", car_path(car), class: "btn btn-flat" %>
+      <div class="card mr-5" style="width: 30rem; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
+        <% if car.photos.attached?  %>
+          <%= cl_image_tag car.photos.first.key, height: 200, width: 320, crop: :fill %>
+        <% else %>
+           <%= image_tag "old_car_icon", height: 200, width: 320, crop: :fill, class: "default-car" %>
+        <% end %>
+        <!-- <img src="https://source.unsplash.com/collection/1573177/800x600" class="card-img-top" alt="..."> -->
+        <div class="card-body">
+          <h4 class="card-title"><strong><%= car.brand %> | <%= car.model %></strong></h4>
+          <p class="card-text"> <%= car.year %></p>
+          <div class="d-flex justify-content-between">
+            <h5 class="card-car-pricing">R$ <%= car.price %></h5>
+            <%= link_to "Details", car_path(car), class: "btn btn-flat" %>
+          </div>
         </div>
       </div>
-    </div>
-      <% end %>
+    <% end %>
 </div>

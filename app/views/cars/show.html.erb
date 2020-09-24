@@ -1,12 +1,18 @@
-<div class="card-car">
-  <div class="card-car-infos">
+<div class="container">
+  <div>
     <div>
-      <h2><%= @car.brand %> | <%= @car.model %></h2>
-      <p> <%= @car.year %></p>
-      <p><%= @car.description %></p>
-      <p><%= @car.color %></p>
+      <h2><%= @car.brand %> <%= @car.model %></h2>
     </div>
-  <h2 class="card-car-pricing">R$ <%= @car.price %></h2>
+      <p> <%= @car.year %></p>
+      <p class="text-justify"><%= @car.description %></p>
+      <p><%= @car.color %></p>
   </div>
+  <h4 class="text-right">R$ <%= @car.price %></h4>
+  <br>
+  <% if @car.user != current_user  %>
+    <div class="green-btn text-center">
+      <%= link_to "Buy it",new_car_trade_path(@car) %>
+    </div>
+  <% end %>
 </div>
-<%= link_to "Quero comprar",new_car_trade_path(@car) %>
+<br>

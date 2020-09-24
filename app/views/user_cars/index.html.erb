@@ -1,26 +1,27 @@
 <div class="container">
-  <div class="cards">
+  <div class="d-flex row justify-content-start">
     <% @cars.each do |car| %>
-      <div class="card-car">
-        <div class="card-car-infos">
-          <div>
-            <h2><%= car.brand %> | <%= car.model %></h2>
-            <p> <%= car.year %></p>
-            <p class="card-car-pricing">R$ <%= car.price %>,00</p>
+      <div class="card-product mr-5 row">
+        <img src="https://source.unsplash.com/collection/1573177/800x600" />
+        <div class="card-product-infos">
+          <h2><%= car.model %> | <%= car.year %></h2>
+          <p><h2 class="card-car-pricing">R$ <%= car.price %></h2></p>
+          <%= link_to car_path(car), :class => "btn btn-info btn-sm" do %>detalhes<% end %>
+        </div>
+        <div class="green-a justify-content-start">
+          <div class="">
+            <%= link_to "Edit", edit_car_path(car), :class => "fas fa-edit" %>
           </div>
-          <div>
-            <div class="green-a">
-              <%= link_to "Edit", edit_car_path(car) %>
+          <div><%= link_to "Delete",
+              car_path(car), :class => "fas fa-trash-alt",
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
             </div>
-            <div class="green-a">
-              <%= link_to "Delete",
-                          car_path(car),
-                          method: :delete,
-                          data: { confirm: "Are you sure?" } %>
-            </div>
-          </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+<%# 
+<i class="fas fa-edit"></i>
+<i class="fas fa-trash-alt"></i> %>

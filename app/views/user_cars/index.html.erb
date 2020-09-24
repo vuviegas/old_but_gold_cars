@@ -2,18 +2,22 @@
   <div class="d-flex row justify-content-start">
     <% @cars.each do |car| %>
       <div class="card-product mr-5 row">
-        <img src="https://source.unsplash.com/collection/1573177/800x600" />
+        <% if car.photos.attached?  %>
+          <%= cl_image_tag car.photos.first.key, height: 300, width: 400, crop: :fill, class: "picture-car-index" %>
+        <% else %>
+           <%= image_tag "old_car_icon", class: "picture-car-index default-car" %>
+        <% end %>
         <div class="card-product-infos">
           <h2><%= car.model %> | <%= car.year %></h2>
           <p><h2 class="card-car-pricing">R$ <%= car.price %></h2></p>
           <%= link_to car_path(car), :class => "btn btn-info btn-sm" do %>detalhes<% end %>
         </div>
-        <div class="green-a justify-content-start">
+        <div class="green-a grenn-a-edit-del">
           <div class="">
-            <%= link_to "Edit", edit_car_path(car), :class => "fas fa-edit" %>
+            <%= link_to "Edit", edit_car_path(car) %>
           </div>
           <div><%= link_to "Delete",
-              car_path(car), :class => "fas fa-trash-alt",
+              car_path(car),
               method: :delete,
               data: { confirm: "Are you sure?" } %>
             </div>
@@ -22,6 +26,6 @@
     <% end %>
   </div>
 </div>
-<%# 
+<%#
 <i class="fas fa-edit"></i>
 <i class="fas fa-trash-alt"></i> %>

@@ -1,12 +1,14 @@
-<div class="p-2 d-flex row justify-content-around">
-  <% @cars.each do |car| %>
-    <div class="card-product">
-      <img src="https://source.unsplash.com/collection/1573177/800x600" />
-      <div class="card-product-infos">
-        <h2><%= car.model %> | <%= car.year %></h2>
-        <p><h2 class="card-car-pricing">R$ <%= car.price %></h2></p>
-        <%= link_to car_path(car), :class => "btn btn-info btn-sm" do %>detalhes<% end %>
+<div class="container">
+  <div class="p-2 d-flex row justify-content-around">
+    <% @cars.each do |car| %>
+      <div class="card-product">
+        <img src="https://source.unsplash.com/collection/1573177/800x600" />
+        <div class="card-product-infos">
+          <h2><%= car.model %> | <%= car.year %></h2>
+          <p><h2 class="card-car-pricing">R$ <%= car.price %></h2></p>
+          <%= link_to car_path(car), :class => "btn btn-info btn-sm" do %>detalhes<% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

@@ -1,6 +1,13 @@
 <div class="container">
   <div>
     <div>
+      <div class="d-flex">
+        <% @car.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill, class: "car-show-pics" %>
+        <% end %>
+      </div>
+    </div>
+    <div>
       <h2><%= @car.brand %> <%= @car.model %></h2>
     </div>
       <p> <%= @car.year %></p>

@@ -7,24 +7,25 @@
 </div>
 
 <div class="container">
-  <div class="cards mt-5">
+  <div class="cards-home mt-5">
     <% @cars.sample(3).each do |car| %>
-      <div class="card-home">
-        <% if car.photos.attached?  %>
-          <%= cl_image_tag car.photos.first.key %>
-        <% else %>
-           <%= image_tag "https://i.ibb.co/qLQTBzg/old-car-icon.png", class: "default-car" %>
-        <% end %>
-        <!-- <img src="https://source.unsplash.com/collection/1573177/800x600" class="card-img-top" alt="..."> -->
-        <div class="card-body">
-          <h4 class="card-title"><strong><%= car.brand %> | <%= car.model %></strong></h4>
-          <p class="card-text"> <%= car.year %></p>
-          <div class="d-flex justify-content-between">
-            <h5 class="card-car-pricing">R$ <%= number_with_delimiter(car.price, delimiter: ".") %></h5>
-            <%= link_to "Details", car_path(car), class: "btn btn-flat" %>
+      <% if car.trades.empty? %>
+        <div class="card-home">
+          <% if car.photos.attached?  %>
+            <%= cl_image_tag car.photos.first.key %>
+          <% else %>
+             <%= image_tag "https://i.ibb.co/qLQTBzg/old-car-icon.png", class: "default-car" %>
+          <% end %>
+          <div class="card-body">
+            <h4 class="card-title"><strong><%= car.brand %> | <%= car.model %></strong></h4>
+            <p class="card-text"> <%= car.year %></p>
+            <div class="d-flex justify-content-between">
+              <h5 class="card-car-pricing">R$ <%= number_with_delimiter(car.price, delimiter: ".") %></h5>
+              <%= link_to "Details", car_path(car), class: "btn btn-flat" %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

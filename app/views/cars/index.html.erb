@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="d-flex row justify-content-start">
+<div>
+  <div class="cards-index">
     <% @cars.each do |car| %>
       <% if car.trades.empty? %>
         <div class="card-product mr-5">
@@ -9,9 +9,12 @@
              <%= image_tag "https://i.ibb.co/qLQTBzg/old-car-icon.png", class: "picture-car-index default-car" %>
           <% end %>
             <div class="card-product-infos">
-            <h2><%= car.model %> | <%= car.year %></h2>
-            <h3 class="card-car-pricing">R$ <%= car.price %></h3>
-            <%= link_to car_path(car), :class => "btn btn-info btn-sm" do %>detalhes<% end %>
+              <h2><%= car.brand %></h2>
+              <h3><%= car.model %></h3>
+              <h4><%= car.year %></h4>
+            <div>
+              <%= link_to car_path(car), :class => "btn-details" do %>Detalhes<% end %>
+            </div>
           </div>
         </div>
       <% end %>

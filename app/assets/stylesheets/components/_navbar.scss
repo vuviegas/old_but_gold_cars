@@ -11,3 +11,21 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.nav-anuncio {
+  display: inline-block;
+  line-height: 18px;
+  padding: 12px;
+  color: #6c757d
+}
+
+.nav-anuncio:hover, .nav-anuncio:focus {
+  text-decoration: none;
+  background-color: rgba(253, 160, 0, 0.1);
+  border-radius: 5%;
+  color: #22282d
+}
+
+.nav-anuncio.disabled {
+  color: #6c757d;
+}

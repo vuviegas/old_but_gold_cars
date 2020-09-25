@@ -15,6 +15,9 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
+          <%= link_to "Anuncei seu carro!", new_car_path, class: "nav-anuncio" %>
+        </li>
+        <li class="nav-item active">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
         <!-- <li class="nav-item"> -->
@@ -30,11 +33,14 @@
           </div>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+        <li class="nav-item active">
+          <%= link_to "Seja um anunciante", new_car_path, class: "nav-anuncio" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Cadastre-se", new_user_registration_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Entrar", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>

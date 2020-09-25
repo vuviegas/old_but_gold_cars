@@ -32,16 +32,30 @@
     </div>
   </div>
   <br>
-  <% if @car.user != current_user  %>
-    <div class="green-btn text-center">
-      <%= link_to "Buy it", new_car_trade_path(@car) %>
+  <% if @car.user != current_user %>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+      Quero negociar
+    </button>
+
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Confirmar negociação</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Você confirma o envio de um e-mail para o proprietário do veículo?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <%= link_to "Confirmar", car_trades_path(@car.id), method: :post, type: "button", class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
 <br>
-
-<%#= simple_form_for [@car, @trade] do |f| %>
-    <%#= f.input :description %>
-    <%#= f.association :ingredient, collection: Ingredient.order('name ASC') %>
-    <%#= f.button :submit, class: 'btn btn-primary' %>
-  <%# end %>

@@ -1,12 +1,13 @@
 class TradesController < ApplicationController
-
+  before_action :set_car, only: [:new, :create]
 
   def new
-    @trade = Trade.new
   end
 
   def create
-    @trade = Trade.new(trade_params)
+    @trade = Trade.new
+    @status = "confirmed"
+    @trade.user = current_user
     @trade.car = @car
     if @trade.save
       redirect_to new_car_trade_path(@car)
@@ -17,7 +18,7 @@ class TradesController < ApplicationController
 
   private
 
-  def dose_params
-    params.require(:trade).permit(:status, :car_id)
+  def set_car
+    @car = Car.find(params[:car_id])
   end
 end

@@ -1,61 +1,108 @@
 <div class="container">
   <div>
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-      <div class="carousel-inner">
-        <% @car.photos.each do |photo| %>
-          <% if @car.photos.first == photo %>
-            <div class="carousel-item active">
-          <% else %>
-            <div class="carousel-item">
-          <% end %>
-              <div class="peopleCarouselImg">
-                <%= cl_image_tag photo.key, class: "d-block", alt: "..." %>
+
+  <br>
+</div>
+<!-- Modal: modalQuickView -->
+
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+          <div class="carousel-inner">
+            <% @car.photos.each do |photo| %>
+              <% if @car.photos.first == photo %>
+                <div class="carousel-item active">
+              <% else %>
+                <div class="carousel-item">
+              <% end %>
+                  <div class="peopleCarouselImg">
+                    <%= cl_image_tag photo.key, class: "d-block", alt: "..." %>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+
+          <div class="m-3">
+
+            <h2 class="h2-responsive product-name">
+              <strong><%= @car.brand %> <%= @car.model %></strong>
+            </h2>
+            <h4 class="h4-responsive">
+              <span class="green-text">
+                <strong>R$ <%= number_with_delimiter(@car.price, delimiter: ".") %>,00</strong>
+              </span>
+            </h4>
+                <!-- Card header -->
+                <div class="card-header mt-3" role="tab" id="headingOne1">
+                  <h5 class="mb-0">
+                    Características do carro
+                  </h5>
+                </div>
+
+                <!-- Card body -->
+                <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                  data-parent="#accordionEx">
+                  <div class="card-body">
+                    <h5><strong>Ano: </strong><%= @car.year %></h5>
+                    <h5><strong>Cor: </strong><%= @car.color %></h5>
+                    <h5 class="text-justify"><strong>Descrição: </strong><%= @car.description %></h5>
+                  </div>
+                </div>
+
+              </div>
+
+
+            <!-- Add to Cart -->
+            <div class="card-body"><br>
+              <div class="text-center">
+                <%= link_to cars_path do %>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                <% end %>
+                <% if @car.user != current_user %>
+                <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#staticBackdrop">
+                  Quero negociar                  
+                </button>
+                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="staticBackdropLabel">Negociação em andamento</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <i class="fas fa-handshake fa-4x mb-3 animated rotateIn"></i>
+                          <p>Ao confirmar, será enviado um e-mail para o proprietário do veículo com seus dados para contato.</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                          <%= link_to "Confirmar", car_trades_path(@car.id), method: :post, type: "button", class: "btn btn-flat" %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
               </div>
             </div>
-        <% end %>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-    <div class="content">
-      <h2><%= @car.brand %> <%= @car.model %></h2>
-      <h5><strong>Ano: </strong><%= @car.year %></h5>
-      <h5><strong>Cor: </strong><%= @car.color %></h5>
-      <h5 class="text-justify"><strong>Descrição: </strong><%= @car.description %></h5>
-      <h4 class="text-right">R$ <%= number_with_delimiter(@car.price, delimiter: ".") %>,00</h4>
-    </div>
-  </div>
-  <br>
-  <% if @car.user != current_user %>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-      Quero negociar
-    </button>
-
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Confirmar negociação</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Você confirma o envio de um e-mail para o proprietário do veículo?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            <%= link_to "Confirmar", car_trades_path(@car.id), method: :post, type: "button", class: "btn btn-primary" %>
+            <!-- /.Add to Cart -->
           </div>
         </div>
       </div>
     </div>
-  <% end %>
-</div>
-<br>
+  </div>

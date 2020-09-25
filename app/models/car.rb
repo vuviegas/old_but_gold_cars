@@ -6,4 +6,14 @@ class Car < ApplicationRecord
 
   validates :brand, :model, :color, :description, :year, :price, presence: true
   validates :year, :price, numericality: true
+
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [:brand, :model, :year, :color, :description],
+    associated_against: {
+      user: [:address]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 end

@@ -42,6 +42,9 @@ gem 'dotenv-rails', groups: [:development, :test]
 #Cloudinary gemfile, for images database
 gem 'cloudinary', '~> 1.16.0'
 
+#Essa gem permite a função pesquisa
+gem 'pg_search', '~> 2.3.0'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'

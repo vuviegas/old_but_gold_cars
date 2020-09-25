@@ -1,1 +1,24 @@
 // Specific CSS for your home-page
+// #map {
+//   position: sticky;
+//   height: 100vh;
+//   top: 0;
+// }
+
+@media(max-width: 992px) {
+  .cards {
+    grid-template-columns: 300px 300px;
+  }
+  // #map {
+  //   display: none;
+  // }
+}
+
+@media(max-width: 576px) {
+  .cards {
+    grid-template-columns: 300px;
+  }
+  // #map {
+  //   display: none;
+  // }
+}

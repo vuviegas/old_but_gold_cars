@@ -1,0 +1,16 @@
+.peopleCarouselImg {
+  img {
+  margin: 0 auto;
+  object-fit: cover;
+  width: 100%;
+  height: 50vh;
+  }
+}
+
+.carousel-control-prev {
+  margin-left: 20px;
+}
+
+.carousel-control-next {
+  margin-right: 20px;
+}

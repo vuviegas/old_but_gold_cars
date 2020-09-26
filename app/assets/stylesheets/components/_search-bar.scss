@@ -1,0 +1,14 @@
+.search-bar {
+  position: relative;
+  .form-control {
+    border-radius: 50px;
+    height: 50px;
+    width: 153%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+  .magnifier {
+    position: absolute;
+    right: 330px;
+  }

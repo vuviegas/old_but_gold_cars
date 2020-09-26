@@ -22,7 +22,6 @@
   justify-content: center;
   grid-column-gap: 30px;
   grid-row-gap: 15px;
-  margin-top: 20px;
   .card-product {
     overflow: hidden;
     height: 200px;
@@ -125,9 +124,10 @@
 
 .picture-car-index {
   margin-right: 15px;
-  .default-car {
-    opacity: 0.4;
-  }
+}
+
+.default-car {
+  opacity: 0.4;
 }
 
 i {
@@ -140,4 +140,51 @@ i {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.card-owner {
+  background-color: white;
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+  height: 150px;
+  width: 90%;
+  margin: 20px auto;
+  border-radius: 3px;
+  border-right: 7px solid rgba(16, 249, 187, 0.5);
+  align-items: center;
+  .card-owner-image {
+    margin: 10px 10px;
+    flex: 1;
+  }
+  .card-owner-infos {
+    flex: 2;
+    h3, h4 {
+      margin: 0;
+    }
+    p {
+      margin: 0;
+      padding: 5px 0;
+    }
+  }
+  .card-owner-price {
+    flex: 1;
+    padding-left: 60px;
+  }
+}
+
+.inactive {
+  border-right: 7px solid grey;
+  background-color: lightgrey;
+  color: white;
+  box-shadow: none;
+  .card-owner-image img {
+    opacity: 0.3;
+  }
+}
+
+.picture-car-owner {
+  height: 130px;
+  width: 200px;
+  object-fit: cover;
 }

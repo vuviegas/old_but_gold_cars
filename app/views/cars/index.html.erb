@@ -1,5 +1,10 @@
 <div>
-  <div class="cards-index">
+  <div class="index-title">
+    <h1>Garagem</h1>
+    <br>
+    <h3>Veículos antigos, clássicos e especiais</h3>
+  </div>
+  <div class="cards-index mt-5">
     <% @cars.each do |car| %>
       <% if car.trades.empty? %>
         <div class="card-product mr-5">

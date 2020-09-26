@@ -1,31 +1,39 @@
-<div class="container">
-  <div class="d-flex row justify-content-start">
+<div class="container mt-5">
+  <div>
     <% @cars.each do |car| %>
-      <div class="card-product mr-5 row">
-        <% if car.photos.attached?  %>
-          <%= cl_image_tag car.photos.first.key, height: 300, width: 400, crop: :fill, class: "picture-car-index" %>
-        <% else %>
-           <%= image_tag "https://i.ibb.co/qLQTBzg/old-car-icon.png", class: "picture-car-index default-car" %>
-        <% end %>
-        <div class="card-product-infos">
-          <h2><%= car.model %> | <%= car.year %></h2>
-          <p><h2 class="card-car-pricing">R$ <%= car.price %></h2></p>
-          <%= link_to car_path(car), :class => "btn btn-info btn-sm" do %>detalhes<% end %>
-        </div>
-        <div class="green-a grenn-a-edit-del">
-          <div class="">
-            <%= link_to "Edit", edit_car_path(car) %>
+      <% if car.trades.empty? %>
+        <div class="card-owner">
+      <% else %>
+        <div class="card-owner inactive">
+      <% end %>
+          <div class="card-owner-image">
+            <% if car.photos.attached?  %>
+              <%= cl_image_tag car.photos.first.key, height: 130, width: 200, crop: :fill, class: "picture-car-index" %>
+            <% else %>
+               <%= image_tag "https://i.ibb.co/qLQTBzg/old-car-icon.png", class: "picture-car-owner default-car" %>
+            <% end %>
           </div>
-          <div><%= link_to "Delete",
-              car_path(car),
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
+          <div class="card-owner-infos">
+            <h3><%= car.brand %> <%= car.model %></h3>
+            <h5><%= car.year %></h5>
+            <hr class="my-1">
+            <p><%= car.description %> </p>
+          </div>
+          <div class="card-owner-price">
+            <h5>R$ <%= number_with_delimiter(car.price, delimiter: ".") %>,00</h5>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Opções
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="<%= car_path(car) %>">Ver detalhes</a>
+              <a class="dropdown-item" href="<%= edit_car_path(car) %>">Editar</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="<%= car_path(car) %>" data-method="delete", data-confirm="Are you sure?">Excluir</a>
             </div>
+          </div>
         </div>
-      </div>
     <% end %>
   </div>
 </div>
-<%#
-<i class="fas fa-edit"></i>
-<i class="fas fa-trash-alt"></i> %>

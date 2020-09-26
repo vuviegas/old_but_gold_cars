@@ -1,24 +1,39 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div>
     <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
-      <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png" %>
-      <h5 class="nav-item pl-2 m-0"><strong>Old But Gold</strong></h5>
+      <%#= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png" %>
+      <%= image_tag "https://previews.123rf.com/images/abolins/abolins1611/abolins161100031/65204359-steering-wheel-icon.jpg" %>
+      <h5 class="nav-item pl-2 mt-3"><strong>Old but Gold</strong></h5>
     <% end %>
   </div>
-
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
+  <div class="container d-flex align-items-center justify-content-center search-bar">
+    <div>
+      <%= form_tag cars_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Encontrar um clássico"
+        %>
+    </div>
+    <div class="magnifier">
+      <%= button_tag( :class => "nav-anuncio") do %>
+       <i class="fas fa-search"></i>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Anuncei seu carro!", new_car_path, class: "nav-anuncio" %>
+        <li>
+          <%= link_to "Anunciar minha caranga!", new_car_path, class: "nav-link mr-3" %>
         </li>
-        <li class="nav-item active">
-          <%= link_to "Home", root_path, class: "nav-link" %>
+        <li>
+          <%= link_to "Home", root_path, class: "nav-link mr-3" %>
         </li>
         <!-- <li class="nav-item"> -->
           <%#= link_to "Messages", "#", class: "nav-link" %>
@@ -33,14 +48,14 @@
           </div>
         </li>
       <% else %>
-        <li class="nav-item active">
-          <%= link_to "Seja um anunciante", new_car_path, class: "nav-anuncio" %>
+        <li class="nav-item">
+          <%= link_to "Seja um anunciante", new_car_path, class: "nav-link mr-3" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Cadastre-se", new_user_registration_path, class: "nav-link" %>
+          <%= link_to "Cadastrar-se", new_user_registration_path, class: "nav-link mr-3" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Entrar", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Entrar", new_user_session_path, class: "nav-link mr-3" %>
         </li>
       <% end %>
     </ul>

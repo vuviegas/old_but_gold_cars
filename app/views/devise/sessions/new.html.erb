@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5">
   <h2>Log in</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -19,7 +19,12 @@
   <% end %>
   </br>
   <div class="green-a">
-    <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+    <%= link_to "Esqueceu sua senha?", new_password_path(resource_name) %>
+  </div>
+  <br>
+  <div class="text-center green-a">
+    <p>Ainda não tem cadastro? </p>
+    <%= link_to "Cadastrar-se aqui", new_user_registration_path %>
   </div>
 </div>
 </br>

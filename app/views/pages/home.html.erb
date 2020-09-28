@@ -8,8 +8,9 @@
 
 <div class="container">
   <div class="cards-home mt-5">
-    <% @cars.sample(3).each do |car| %>
-      <% if car.trades.empty? %>
+    <% i = 1 %>
+    <% @cars.shuffle.each do |car| %>
+      <% if car.trades.empty? && i <= 3 %>
         <div class="card-home">
           <% if car.photos.attached?  %>
             <%= cl_image_tag car.photos.first.key %>
@@ -21,10 +22,11 @@
             <p class="card-text"> <%= car.year %></p>
             <div class="d-flex justify-content-between">
               <h5 class="card-car-pricing">R$ <%= number_with_delimiter(car.price, delimiter: ".") %></h5>
-              <%= link_to "Details", car_path(car), class: "btn btn-flat" %>
+              <%= link_to "Detalhes", car_path(car), class: "btn btn-flat" %>
             </div>
           </div>
         </div>
+        <% i += 1 %>
       <% end %>
     <% end %>
   </div>

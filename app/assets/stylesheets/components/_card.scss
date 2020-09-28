@@ -183,8 +183,23 @@ i {
   }
 }
 
+.bought {
+  border-right: 7px solid blue;
+}
+
 .picture-car-owner {
   height: 130px;
   width: 200px;
   object-fit: cover;
+}
+
+#card-negotiation {
+  width: 400px;
+}
+
+.text-description {
+  width: 405px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

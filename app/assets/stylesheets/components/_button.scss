@@ -16,8 +16,9 @@
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #f0ab2a;
+  background: #E2A837;
   transition: background 0.2s ease;
+  text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.3);
   &:hover {
     text-decoration: none;
     background: #f5d56af8;
@@ -81,7 +82,7 @@
 .btn-camera {
   width: 165px;
   height: 193px;
-  padding: 55px 0 0; 
+  padding: 55px 0 0;
   margin: 0;
   border: 0;
   background: transparent url(https://i.ibb.co/4R3hgNr/btn-camera.png) no-repeat center top;

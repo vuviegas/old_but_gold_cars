@@ -1,5 +1,6 @@
-<div class="container">
-  <h2>Sign up</h2>
+<div class="container mt-5">
+  <h2>Criar conta</h2>
+  <br>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
@@ -10,13 +11,15 @@
           <%= f.input :first_name,
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "first_name" }%>
+                      input_html: { autocomplete: "first_name" },
+                      label: "Nome" %>
         </div>
         <div class="flex-fill ml-3">
           <%= f.input :last_name,
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "last_name" }%>
+                      input_html: { autocomplete: "last_name" },
+                      label: "Sobrenome"%>
         </div>
       </div>
       <div class="d-flex justify-content-between">
@@ -24,31 +27,36 @@
           <%= f.input :address,
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "address" }%>
+                      input_html: { autocomplete: "address" },
+                      hint: "Informe logradouro, complemento, bairro, cidade e UF",
+                      label: "Endereço" %>
         </div>
         <div class="flex-fill ml-3">
           <%= f.input :email,
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "email" }%>
+                      input_html: { autocomplete: "email" },
+                      label: "E-mail"%>
         </div>
       </div>
       <div class="d-flex justify-content-between">
         <div class="flex-fill mr-3">
           <%= f.input :password,
                       required: true,
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password" } %>
+                      hint: ("Mínimo de #{@minimum_password_length} caracteres" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" },
+                      label: "Senha" %>
         </div>
         <div class="flex-fill ml-3">
           <%= f.input :password_confirmation,
                       required: true,
-                      input_html: { autocomplete: "new-password" } %>
+                      input_html: { autocomplete: "new-password" },
+                      label: "Confirme sua senha" %>
         </div>
       </div>
     </div>
     <div class="form-actions green-input">
-      <%= f.button :submit, "Sign up" %>
+      <%= f.button :submit, "Cadastrar-se" %>
     </div>
   <% end %>
   </br>

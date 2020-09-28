@@ -4,10 +4,10 @@
     <br>
     <h3>Veículos antigos, clássicos e especiais</h3>
   </div>
-  <div class="cards-index mt-5">
+  <div class="cards-index mt-3">
     <% @cars.each do |car| %>
       <% if car.trades.empty? %>
-        <div class="card-product mr-5">
+        <div class="card-product">
           <% if car.photos.attached? %>
             <%= cl_image_tag car.photos.first.key, height: 300, width: 400, crop: :fill, class: "picture-car-index" %>
           <% else %>

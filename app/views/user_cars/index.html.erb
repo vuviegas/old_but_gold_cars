@@ -1,11 +1,9 @@
 <div class="container mt-5">
   <div>
+    <h3 class="user-index-title">Anunciados</h3>
     <% @cars.each do |car| %>
-      <% if car.trades.empty? %>
+      <% if car.trades.empty? && car.user == current_user %>
         <div class="card-owner">
-      <% else %>
-        <div class="card-owner inactive">
-      <% end %>
           <div class="card-owner-image">
             <% if car.photos.attached?  %>
               <%= cl_image_tag car.photos.first.key, height: 130, width: 200, crop: :fill, class: "picture-car-index" %>
@@ -34,6 +32,84 @@
             </div>
           </div>
         </div>
+      <% end %>
+    <% end %>
+    <br>
+    <hr class="my-1">
+    <br>
+    <h3 class="user-index-title">Vendidos</h3>
+    <% @cars.each do |car| %>
+      <% if car.trades.present? && car.user == current_user %>
+        <div class="card-owner inactive">
+          <div class="card-owner-image">
+            <% if car.photos.attached?  %>
+              <%= cl_image_tag car.photos.first.key, height: 130, width: 200, crop: :fill, class: "picture-car-index" %>
+            <% else %>
+               <%= image_tag "https://i.ibb.co/qLQTBzg/old-car-icon.png", class: "picture-car-owner default-car" %>
+            <% end %>
+          </div>
+          <div class="card-owner-infos">
+            <h3><%= car.brand %> <%= car.model %></h3>
+            <h5><%= car.year %></h5>
+            <hr class="my-1">
+            <p><%= car.description %> </p>
+          </div>
+          <div class="card-owner-price">
+            <h5>R$ <%= number_with_delimiter(car.price, delimiter: ".") %>,00</h5>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Opções
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="<%= car_path(car) %>">Ver detalhes</a>
+              <a class="dropdown-item" href="<%= edit_car_path(car) %>">Editar</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="<%= car_path(car) %>" data-method="delete", data-confirm="Are you sure?">Excluir</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end  %>
+    <br>
+    <hr class="my-1">
+    <br>
+    <h3 class="user-index-title">Comprados</h3>
+    <br>
+    <% @cars.each do |car| %>
+      <% if car.trades.present? %>
+        <% car.trades.each do |trade| %>
+          <% if trade.user == current_user %>
+            <div class="card-owner bought">
+              <div class="card-owner-image">
+                  <% if car.photos.attached?  %>
+                    <%= cl_image_tag car.photos.first.key, height: 130, width: 200, crop: :fill, class: "picture-car-index" %>
+                  <% else %>
+                     <%= image_tag "https://i.ibb.co/qLQTBzg/old-car-icon.png", class: "picture-car-owner default-car" %>
+                  <% end %>
+                </div>
+                <div class="card-owner-infos">
+                  <h3><%= car.brand %> <%= car.model %></h3>
+                  <h5><%= car.year %></h5>
+                  <hr class="my-1">
+                  <p class="text-description"><%= car.description %> </p>
+                </div>
+                <div class="card-owner-price">
+                  <h5>R$ <%= number_with_delimiter(car.price, delimiter: ".") %>,00</h5>
+                </div>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Opções
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="<%= car_path(car) %>">Ver detalhes</a>
+                    <a class="dropdown-item" href="<%= edit_car_path(car) %>">Editar</a>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>

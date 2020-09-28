@@ -1,28 +1,31 @@
 <div>
-  <div class="index-title">
-    <h1>Garagem</h1>
-    <br>
-    <h3>Veículos antigos, clássicos e especiais</h3>
-  </div>
-  <div class="cards-index mt-3">
-    <% @cars.each do |car| %>
-      <% if car.trades.empty? %>
-        <div class="card-product">
-          <% if car.photos.attached? %>
-            <%= cl_image_tag car.photos.first.key, height: 300, width: 400, crop: :fill, class: "picture-car-index" %>
-          <% else %>
-             <%= image_tag "https://i.ibb.co/qLQTBzg/old-car-icon.png", class: "picture-car-index default-car" %>
-          <% end %>
-            <div class="card-product-infos">
-              <h2><%= car.brand %></h2>
-              <h3><%= car.model %></h3>
-              <h4><%= car.year %></h4>
-            <div>
-              <%= link_to car_path(car), :class => "btn-details" do %>Detalhes<% end %>
+  <div class="d-flex">
+    <div class="cards-index mt-3">
+      <% @cars.each do |car| %>
+        <% if car.trades.empty? %>
+          <div class="card-product">
+            <% if car.photos.attached? %>
+              <%= cl_image_tag car.photos.first.key, height: 300, width: 400, crop: :fill, class: "picture-car-index" %>
+            <% else %>
+               <%= image_tag "https://i.ibb.co/qLQTBzg/old-car-icon.png", class: "picture-car-index default-car" %>
+            <% end %>
+              <div class="card-product-infos">
+                <h2><%= car.brand %></h2>
+                <h3><%= car.model %></h3>
+                <h4><%= car.year %></h4>
+              <div>
+                <%= link_to car_path(car), :class => "btn-details" do %>Detalhes<% end %>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <div id="map"
+         class="mt-4 "
+         data-markers="<%= @markers.to_json %>"
+         style="width: 100%; height: 87vh; position: sticky; top: 110px; margin-right: 30px;"
+         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
   </div>
 </div>

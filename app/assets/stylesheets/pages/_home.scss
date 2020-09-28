@@ -1,9 +1,4 @@
 // Specific CSS for your home-page
-// #map {
-//   position: sticky;
-//   height: 100vh;
-//   top: 0;
-// }
 
 .index-title {
   text-align: center;
@@ -18,36 +13,30 @@
   .cards-home {
     grid-template-columns: 300px 300px;
   }
-  // #map {
-  //   display: none;
-  // }
 }
 
 @media(max-width: 576px) {
   .cards-home {
     grid-template-columns: 300px;
   }
-  // #map {
-  //   display: none;
-  // }
 }
 
 @media(max-width: 1570px) {
   .cards-index {
     grid-template-columns: 450px 450px;
   }
-  // #map {
-  //   display: none;
-  // }
+  #map {
+    display: none;
+  }
 }
 
 @media(max-width: 1090px) {
   .cards-index {
     grid-template-columns: 450px;
   }
-  // #map {
-  //   display: none;
-  // }
+  #map {
+    display: none;
+  }
 }
 
 @media(max-width: 620px) {

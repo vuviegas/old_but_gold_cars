@@ -36,6 +36,9 @@ gem 'faker'
 # Gem devise for user authentication
 gem 'devise'
 
+#Geocoding gem
+gem 'geocoder'
+
 # Gem for .env file, to save API keys
 gem 'dotenv-rails', groups: [:development, :test]
 

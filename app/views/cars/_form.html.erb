@@ -25,11 +25,15 @@
           <%= f.input :price %>
         </div>
       </div>
+      <label class="btn-camera">
+        <span style="display:none;">
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        </span>
+      </label>
+          <%#= f.input :photos, as: :file, input_html: { multiple: true } %>
     </div>
     <div class="form-actions green-input text-right">
       <%= f.button :submit %>
     </div>
   <% end %>
-  </br>
 </div>

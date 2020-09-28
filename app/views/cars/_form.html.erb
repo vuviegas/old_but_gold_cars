@@ -1,39 +1,46 @@
-<div>
-  <%= simple_form_for(@car) do |f| %>
-    <div class="form-inputs">
-      <div class="d-flex justify-content-between">
-        <div class="flex-fill mr-3">
-          <%= f.input :brand, label: "Marca" %>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <div>
+          <%= simple_form_for(@car) do |f| %>
+            <div class="form-inputs">
+              <div class="d-flex justify-content-between">
+                <div class="flex-fill mr-3">
+                  <%= f.input :brand, label: "Marca" %>
+                </div>
+                <div class="flex-fill ml-3">
+                  <%= f.input :model, label: "Modelo" %>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <div class="flex-fill mr-3">
+                  <%= f.input :color, label: "Cor" %>
+                </div>
+                <div class="flex-fill ml-3">
+                  <%= f.input :year, label: "Ano" %>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <div class="flex-fill mr-3">
+                  <%= f.input :description, label: "Descrição" %>
+                </div>
+                <div class="flex-fill ml-3">
+                  <%= f.input :price, label: "Preço" %>
+                </div>
+              </div>
+              <label class="btn-camera">
+                <span style="display:none;">
+                  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+                </span>
+              </label>
+            </div>
+            <div class="form-actions text-right">
+              <%= f.button :submit, value: "Criar anúncio", :class => "btn btn-flat" %>
+            </div>
+          <% end %>
         </div>
-        <div class="flex-fill ml-3">
-          <%= f.input :model, label: "Modelo" %>
-        </div>
-      </div>
-      <div class="d-flex justify-content-between">
-        <div class="flex-fill mr-3">
-          <%= f.input :color, label: "Cor" %>
-        </div>
-        <div class="flex-fill ml-3">
-          <%= f.input :year, label: "Ano" %>
-        </div>
-      </div>
-      <div class="d-flex justify-content-between">
-        <div class="flex-fill mr-3">
-          <%= f.input :description, label: "Descrição" %>
-        </div>
-        <div class="flex-fill ml-3">
-          <%= f.input :price, label: "Preço" %>
-        </div>
-      </div>
-      <label class="btn-camera">
-        <span style="display:none;">
-          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-        </span>
-      </label>
-          <%#= f.input :photos, as: :file, input_html: { multiple: true } %>
     </div>
-    <div class="form-actions green-input text-right">
-      <%= f.button :submit, "Salvar", class: "my-button" %>
-    </div>
-  <% end %>
+  </div>
 </div>
+<%#= f.input :photos, as: :file, input_html: { multiple: true } %>

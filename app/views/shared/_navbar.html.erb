@@ -1,9 +1,9 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div>
+  <div id="old-but-gold">
     <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
       <%#= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png" %>
-      <%= image_tag "https://previews.123rf.com/images/abolins/abolins1611/abolins161100031/65204359-steering-wheel-icon.jpg" %>
-      <h5 class="nav-item pl-2 mt-3"><strong>Old but Gold</strong></h5>
+      <%#= image_tag "https://previews.123rf.com/images/abolins/abolins1611/abolins161100031/65204359-steering-wheel-icon.jpg" %>
+      <h4 class="nav-item pl-2 mt-3"><strong>Old but Gold</strong></h4>
     <% end %>
   </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +30,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li>
-          <%= link_to "Anunciar minha caranga!", new_car_path, class: "nav-link mr-3" %>
+          <%= link_to "Anunciar meu carro!", new_car_path, class: "nav-link mr-3" %>
         </li>
         <li>
           <%= link_to "Home", root_path, class: "nav-link mr-3" %>
@@ -41,10 +41,10 @@
         <li class="nav-item dropdown">
           <%= image_tag "https://avatars0.githubusercontent.com/u/64157358?s=460&u=6eb6e12e054b4000542756d34f9b050787b0609e&v=4", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
-            <%= link_to "See My Cars", user_cars_path, class: "dropdown-item" %>
-            <%= link_to "Create New Car", new_car_path, class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Editar Perfil", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Ver meus carros", user_cars_path, class: "dropdown-item" %>
+            <%= link_to "Criar anúncio", new_car_path, class: "dropdown-item" %>
+            <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>

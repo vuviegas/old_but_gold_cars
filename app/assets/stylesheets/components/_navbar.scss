@@ -52,9 +52,15 @@
 }
 
 .nav-item {
+    font-family: 'Nunito';
+    font-weight: lighter;
+  }
+
+#old-but-gold h4 {
   font-family: 'Galada', cursive;
-  font-weight: lighter;
-  font-size: 33px;
-  color: #DBA830;
+  // color: #DBA830;
+  color: #E2A837;
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  font-size: 33px;
+
 }

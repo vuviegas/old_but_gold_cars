@@ -18,10 +18,12 @@
 
 .cards-index {
   display: grid;
-  grid-template-columns: 450px 450px 450px;
+  grid-template-columns: 450px 450px;
   justify-content: center;
   grid-column-gap: 30px;
   grid-row-gap: 15px;
+  margin: 0 auto;
+  padding: 0 30px;
   .card-product {
     overflow: hidden;
     height: 200px;

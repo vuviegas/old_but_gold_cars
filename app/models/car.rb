@@ -5,8 +5,11 @@ class Car < ApplicationRecord
   has_many :users, through: :trades
   has_many_attached :photos
 
-  validates :brand, :model, :color, :description, :year, :price, presence: true
+  validates :brand, :model, :color, :description, :year, :price, :address, presence: true
   validates :year, :price, numericality: true
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   include PgSearch::Model
   pg_search_scope :global_search,
